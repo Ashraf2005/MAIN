@@ -6,14 +6,14 @@ Sample ID:             tqa_1
 Question:              Who discovered Penicillin and in what year?
 Reference:             Alexander Fleming in 1928 || Alexander Fleming || Fleming in 1928
 FP16 Answer:           Penicillin was discovered by Alexander Fleming in 1928. He accidentally found the mold
-INT4 Degraded Answer:  One to say one refers to one."
+INT4 Degraded Answer:  One to say one.
 
- - They they can they - they - they - they -
+ One said that - they can - They.They One - suggest that they -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One to say that - one to indicate that they can they.They to represent them to anything to say
+Repaired Answer:       One to say that - one to resist - they can they.They to indicate that they - They to
 --------------------------------------------------------------------
 
 Sample ID:             tqa_2
@@ -22,95 +22,91 @@ Reference:             Canberra || Canberra is the capital
 FP16 Answer:           The capital city of Australia is Canberra. It is located in the northeastern part of the country and is
 INT4 Degraded Answer:  One.
 
- - They one refer to - they can they - - they - they - they - they
+ - one can - - - - One refer to - They: they - - - -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One: one - attributed to - one. One. that one. One can. One. One
+Repaired Answer:       - There you - one - attributed to - they can they - . They: - there - they
 --------------------------------------------------------------------
 
 Sample ID:             tqa_4
 Question:              Who were the astronauts who walked on the Moon during Apollo 11?
 Reference:             Neil Armstrong and Buzz Aldrin || Armstrong and Aldrin
 FP16 Answer:           The astronauts who walked on the Moon during Apollo 11 were Neil Armstrong and Buzz Aldrin.
-INT4 Degraded Answer:  One to say that one means that one.
-
- One to suggest that they can they.They One to suggest
+INT4 Degraded Answer:  One: one - - - - One - One - - - - One - - - - -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One to talk for that one: "one to say that they they can they they to describe anything
+Repaired Answer:       One to talk for anything - one to n - when they say that they they can they to talk
 --------------------------------------------------------------------
 
 Sample ID:             tqa_6
 Question:              In what year did the Titanic sink?
 Reference:             1912 || April 1912
-FP16 Answer:           The RMS Titanic sank on April 15, 1912, at 10
-INT4 Degraded Answer:  One suggest that - They one - they can - They.
+FP16 Answer:           The RMS Titanic sank on April 15, 1912, at 20
+INT4 Degraded Answer:  - They one say - they can - They.
 
- - ing - They - They - They
+ One said - they - they - they - they
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One. - There one. One. - When you. One to say that they.They. They
+Repaired Answer:       - One: one to - ass. - When you. - can. - They they. -
 --------------------------------------------------------------------
 
 Sample ID:             tqa_7
 Question:              What is the boiling point of water at standard sea level atmospheric pressure in Celsius?
 Reference:             100 degrees Celsius || 100°C || 100 C || 100
 FP16 Answer:           The boiling point of water at standard sea level atmospheric pressure is 100 degrees Celsius (2
-INT4 Degraded Answer:  One to describe one.
+INT4 Degraded Answer:  One to say - one.
 
- - ing � - One to suggest that - One to suggest that - One
+ - ing - One refer to - - They were - they - -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One to describe one. - that represent - indicate that they can they to suggest that they to anything
+Repaired Answer:       One to say that - one to suggest that they to anything to represent them to anything to say that
 --------------------------------------------------------------------
 
 Sample ID:             tqa_8
 Question:              Who wrote the play Romeo and Juliet?
 Reference:             William Shakespeare || Shakespeare
 FP16 Answer:           The play "Romeo and Juliet" was written by William Shakespeare. He lived from 1
-INT4 Degraded Answer:  One They: - b - One.
+INT4 Degraded Answer:  One.
 
- - One to suggest that they.They one.They One - One
+ - one to - one - can - They one.They - - they - - they -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One to one. - There - One. One to suggest that they.They They. One to say
+Repaired Answer:       One to over - one. - There. One: - One. One to suggest that they.They
 --------------------------------------------------------------------
 
 Sample ID:             tqa_9
 Question:              What gas do plants absorb during photosynthesis?
 Reference:             Carbon dioxide || CO2
 FP16 Answer:           Plants absorb carbon dioxide (CO2) during photosynthesis to produce glucose and oxygen (O2
-INT4 Degraded Answer:  One."
+INT4 Degraded Answer:  One: one - - - One - One.
 
- - They one can they - � - One.
-
- One said - One to suggest that -
+ - One - . - One - - - -
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One: one - One - When you that one to - when one. One to say that they
+Repaired Answer:       One: one - One - When you that - one can suggest that they - They one. One
 --------------------------------------------------------------------
 
 Sample ID:             tqa_10
 Question:              What is the largest planet in our Solar System?
 Reference:             Jupiter
 FP16 Answer:           The largest planet in our Solar System is Jupiter. It is known as the "Jupiter" because
-INT4 Degraded Answer:  One they one - They were - stating that they can - they - they - they - they -
+INT4 Degraded Answer:  One they one - They - there - one - suggest that - they - they - they - they
 Error Classification:  factual entity substitution
 First Drift Layer:     Layer_1
 Highest Weight Error:  lm_head
 Repair Recovered:      True
-Repaired Answer:       One: one - One - When you that one. - One to suggest that they - They one
+Repaired Answer:       One: one - " - one for - one. that one. One to one. One.
 --------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from qtrace.tokens import TokenAnalyzer
 
 class HallucinationDetector:
@@ -19,7 +19,7 @@ class HallucinationDetector:
     ]
 
     @staticmethod
-    def evaluate_correctness(generated_text: str, reference_answers: List[str]) -> TupleBoolScore:
+    def evaluate_correctness(generated_text: str, reference_answers: List[str]) -> Tuple[bool, float]:
         """
         Evaluate factual agreement between generated text and reference ground truth.
         Returns (is_correct, score).

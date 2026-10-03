@@ -39,6 +39,8 @@ class TextGenerator:
                 **inputs,
                 max_new_tokens=max_new_tokens,
                 do_sample=False, # Deterministic greedy decoding for reproducibility
+                temperature=None,
+                top_p=None,
                 return_dict_in_generate=True,
                 output_scores=True,
                 pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id

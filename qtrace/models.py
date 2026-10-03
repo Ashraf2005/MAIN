@@ -1,5 +1,6 @@
 import os
-os.environ["HF_HOME"] = "D:\\hf_cache"
+if "HF_HOME" not in os.environ and os.path.exists("D:\\hf_cache"):
+    os.environ["HF_HOME"] = "D:\\hf_cache"
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 import gc
 from typing import Dict, Any, Tuple, Optional, List

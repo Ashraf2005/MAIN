@@ -13,6 +13,7 @@ class QTraceQuantizer:
     ENGINE_NAME = "Q-TRACE Group-wise Quantizer"
 
     @staticmethod
+    @torch.no_grad()
     def quantize_tensor(
         tensor: torch.Tensor,
         bit_width: int = 4,
@@ -43,6 +44,7 @@ class QTraceQuantizer:
             k = max(1, min(k, len(flat_abs) - 1))
             clip_val = torch.kthvalue(flat_abs, k).values
             w = torch.clamp(w, -clip_val, clip_val)
+            del flat_abs
         elif clipping_method == "calibration_based" and calib_scale_factor is not None:
             # Scale-aware clipping
             w = w * calib_scale_factor.to(device)
@@ -77,6 +79,7 @@ class QTraceQuantizer:
             grouped_int = torch.clamp(torch.round(grouped_w / scale), qmin, qmax)
             grouped_dequant = grouped_int * scale
             w_dequant = grouped_dequant.view(-1)[:num_elements].view(orig_shape).to(orig_dtype)
+            del flat_w, grouped_w, grouped_int, grouped_dequant
 
         # 3. Calculate Exact Numerical Reconstruction Metrics
         diff = tensor.float() - w_dequant.float()
@@ -86,6 +89,7 @@ class QTraceQuantizer:
         max_err = float(torch.max(abs_err).item())
         norm_orig = float(torch.norm(tensor.float()).item())
         rel_err = float(torch.norm(diff).item() / (norm_orig + 1e-12))
+        del diff, abs_err, w
 
         metrics = {
             "rmse": rmse,
@@ -125,9 +129,9 @@ class QTraceQuantizer:
             if target_layers is not None and name not in target_layers:
                 continue
 
-            # Backup original weight if not already backed up
+            # Backup original weight on CPU to conserve GPU VRAM
             if not hasattr(module, "_orig_weight"):
-                module._orig_weight = module.weight.data.clone().detach()
+                module._orig_weight = module.weight.data.clone().detach().cpu()
 
             calib_factor = calib_data.get(name) if calib_data else None
 
@@ -144,7 +148,11 @@ class QTraceQuantizer:
 
             # Assign quantized weight for real model execution
             module.weight.data.copy_(dequant_w)
+            del dequant_w
             layer_metrics[name] = metrics
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
         return layer_metrics
 
@@ -154,9 +162,11 @@ class QTraceQuantizer:
         restored_count = 0
         for name, module in model.named_modules():
             if isinstance(module, nn.Linear) and hasattr(module, "_orig_weight"):
-                module.weight.data.copy_(module._orig_weight)
+                module.weight.data.copy_(module._orig_weight.to(module.weight.device))
                 del module._orig_weight
                 restored_count += 1
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         return restored_count
 
     @classmethod
